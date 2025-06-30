@@ -2,6 +2,8 @@ package dev.annopud.first_spring_clients.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,7 @@ public class UserController {
     // Alternatively, you could use UserHttpClient instead of UserRestClient
     private final UserHttpClient userHttpClient;
     private final DiscoveryClient discoveryClient;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public UserController(UserRestClient userRestClient, UserHttpClient userHttpClient, DiscoveryClient discoveryClient) {
         this.userRestClient = userRestClient;
@@ -49,6 +52,7 @@ public class UserController {
 
     @GetMapping("")
     public String findAll() {
+        logger.info("Fetching all users through http client");
         return "List services by spring clients: " + String.join(", ", discoveryClient.getServices());
     }
 

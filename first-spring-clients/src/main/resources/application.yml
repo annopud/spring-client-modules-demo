@@ -39,3 +39,7 @@ server:
 #    key-store: classpath:keystore.p12
 #    key-store-password: changeit
 #    key-store-type: PKCS12
+logging:
+  pattern:
+    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+  include-application-name: true

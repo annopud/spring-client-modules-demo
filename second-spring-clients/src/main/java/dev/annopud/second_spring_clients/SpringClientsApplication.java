@@ -1,6 +1,6 @@
-package dev.annopud.spring_clients;
+package dev.annopud.second_spring_clients;
 
-import dev.annopud.spring_clients.user.UserHttpClient;
+import dev.annopud.second_spring_clients.user.UserHttpClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

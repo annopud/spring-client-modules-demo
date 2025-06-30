@@ -1,6 +1,8 @@
-package dev.annopud.spring_clients.first;
+package dev.annopud.second_spring_clients.first;
 
-import dev.annopud.spring_clients.user.User;
+import dev.annopud.second_spring_clients.user.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ public class FirstController {
     private final DiscoveryClient discoveryClient;
     private final FirstClient firstClient;
     private final FirstFeignClient firstFeignClient;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public FirstController(
         DiscoveryClient discoveryClient,
@@ -32,6 +35,7 @@ public class FirstController {
     // Example endpoint to get all users
     @GetMapping("/users")
     public String getAllUsers() {
+        logger.info("Fetching all users through http client");
         return "Through http client --> " + firstClient.findAll();
     }
 

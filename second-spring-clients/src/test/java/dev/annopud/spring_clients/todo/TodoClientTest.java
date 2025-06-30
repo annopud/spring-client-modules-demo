@@ -1,5 +1,7 @@
 package dev.annopud.spring_clients.todo;
 
+import dev.annopud.second_spring_clients.todo.Todo;
+import dev.annopud.second_spring_clients.todo.TodoClient;
 import org.assertj.core.api.Assertions;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.Test;

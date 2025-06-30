@@ -1,4 +1,4 @@
-package dev.annopud.spring_clients.post;
+package dev.annopud.second_spring_clients.post;
 
 public record Post(
     Integer userId,

@@ -1,4 +1,4 @@
-package dev.annopud.spring_clients.album;
+package dev.annopud.second_spring_clients.album;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

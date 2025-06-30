@@ -1,4 +1,4 @@
-package dev.annopud.spring_clients.user;
+package dev.annopud.second_spring_clients.post;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
@@ -7,26 +7,19 @@ import org.springframework.web.client.RestClient;
 import java.util.List;
 
 @Component
-public class UserRestClient {
+public class PostClient {
+
     private final RestClient restClient;
 
-    public UserRestClient(RestClient.Builder restClientBuilder) {
+    public PostClient(RestClient.Builder restClientBuilder) {
         this.restClient = restClientBuilder
             .baseUrl("https://jsonplaceholder.typicode.com")
             .build();
     }
 
-    public List<User> findAll() {
+    public List<Post> findAll() {
         return restClient.get()
-            .uri("/users")
-            .retrieve()
-            .body(new ParameterizedTypeReference<>() {
-            });
-    }
-
-    public User findById(int id) {
-        return restClient.get()
-            .uri("/users/{id}", id)
+            .uri("/posts")
             .retrieve()
             .body(new ParameterizedTypeReference<>() {
             });

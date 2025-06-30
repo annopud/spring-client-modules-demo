@@ -1,5 +1,6 @@
 package dev.annopud.spring_clients.post;
 
+import dev.annopud.second_spring_clients.post.PostClient;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

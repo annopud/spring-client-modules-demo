@@ -1,6 +1,6 @@
-package dev.annopud.spring_clients.first;
+package dev.annopud.second_spring_clients.first;
 
-import dev.annopud.spring_clients.user.User;
+import dev.annopud.second_spring_clients.user.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

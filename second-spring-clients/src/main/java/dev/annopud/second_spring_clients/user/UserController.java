@@ -1,4 +1,4 @@
-package dev.annopud.spring_clients.user;
+package dev.annopud.second_spring_clients.user;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

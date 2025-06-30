@@ -41,3 +41,6 @@ logging:
   level:
     org.springframework.cloud.openfeign: DEBUG
     org.springframework.cloud.kubernetes: DEBUG
+  pattern:
+    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+  include-application-name: true

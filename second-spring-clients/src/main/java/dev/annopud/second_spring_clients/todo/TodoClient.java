@@ -1,4 +1,4 @@
-package dev.annopud.spring_clients.todo;
+package dev.annopud.second_spring_clients.todo;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;

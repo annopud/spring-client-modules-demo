@@ -1,13 +1,15 @@
-package dev.annopud.spring_clients.first;
+package dev.annopud.second_spring_clients.user;
 
-import dev.annopud.spring_clients.user.User;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;
 
-public interface FirstClient {
+import java.util.List;
+
+public interface UserHttpClient {
 
     @GetExchange("/users")
-    String findAll();
+    List<User> findAll();
 
     @GetExchange("/users/{id}")
     User findById(@PathVariable int id);

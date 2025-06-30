@@ -1,4 +1,4 @@
-package dev.annopud.spring_clients.first;
+package dev.annopud.second_spring_clients.first;
 
 import org.springframework.cloud.client.DefaultServiceInstance;
 import org.springframework.cloud.client.ServiceInstance;

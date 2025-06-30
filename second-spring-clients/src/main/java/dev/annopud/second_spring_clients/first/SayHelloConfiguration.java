@@ -1,4 +1,4 @@
-package dev.annopud.spring_clients.first;
+package dev.annopud.second_spring_clients.first;
 
 import org.springframework.cloud.loadbalancer.core.ServiceInstanceListSupplier;
 import org.springframework.context.annotation.Bean;
