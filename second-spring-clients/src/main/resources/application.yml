@@ -2,7 +2,7 @@ spring:
   profiles:
     active: local
   application:
-    name: spring-clients-develop
+    name: second-spring-clients
   cloud:
     kubernetes:
       discovery:

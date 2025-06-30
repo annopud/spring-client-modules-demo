@@ -91,7 +91,7 @@
 	</dependencies>
 
     <build>
-		<finalName>spring-clients-develop</finalName>
+		<finalName>second-spring-clients</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -86,7 +86,7 @@
 	</dependencies>
 
     <build>
-		<finalName>spring-clients</finalName>
+		<finalName>first-spring-clients</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
