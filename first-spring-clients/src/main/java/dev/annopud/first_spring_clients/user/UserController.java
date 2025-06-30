@@ -2,6 +2,7 @@ package dev.annopud.first_spring_clients.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -24,7 +25,7 @@ public class UserController {
     // Alternatively, you could use UserHttpClient instead of UserRestClient
     private final UserHttpClient userHttpClient;
     private final DiscoveryClient discoveryClient;
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     public UserController(UserRestClient userRestClient, UserHttpClient userHttpClient, DiscoveryClient discoveryClient) {
         this.userRestClient = userRestClient;
@@ -32,8 +33,9 @@ public class UserController {
         this.discoveryClient = discoveryClient;
     }
 
-    @JsonIgnoreProperties(ignoreUnknown = false)
     @Data
+    @EqualsAndHashCode(callSuper = true)
+    @JsonIgnoreProperties(ignoreUnknown = false)
     public static class TestRequest extends TestRequestBase {
         private String second;
         private String third;
@@ -58,6 +60,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User findById(@PathVariable int id) {
+        logger.info("Fetching user with ID: {}", id);
         return userRestClient.findById(id);
     }
 
