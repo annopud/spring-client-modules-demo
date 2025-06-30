@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: spring-clients-develop
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+        all-namespaces:
+          - default
+    loadbalancer:
+      mode: service
+      ribbon:
+        enabled: false  # Ribbon is deprecated
+  main:
+    allow-bean-definition-overriding: true
+management:
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - info
+          - metrics
+          - prometheus
+          - refresh
+          - env
+          - loggers
+          - restart
+
+server:
+  port: 8081
+logging:
+  level:
+    org.springframework.cloud.openfeign: DEBUG
+    org.springframework.cloud.kubernetes: DEBUG
