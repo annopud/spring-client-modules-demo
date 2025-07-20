@@ -1,15 +1,15 @@
 package dev.annopud.second_spring_clients;
 
-import brave.propagation.CurrentTraceContext;
 import dev.annopud.second_spring_clients.config.CompletableFutureExecutor;
 import dev.annopud.second_spring_clients.user.UserHttpClient;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
@@ -35,29 +35,10 @@ public class SpringClientsApplication {
     }
 
     @Bean
-    public Executor taskExecutor(CurrentTraceContext currentTraceContext) {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(2);
-        executor.setMaxPoolSize(2);
-        executor.setQueueCapacity(500);
-        executor.setThreadNamePrefix("GithubLookup-");
-        executor.setTaskDecorator(currentTraceContext::wrap);
-
-        executor.initialize();
-        return executor;
-    }
-
-//	@Bean
-//	public Executor taskExecutor(CurrentTraceContext currentTraceContext) {
-//		ExecutorService virtualExecutor = Executors.newVirtualThreadPerTaskExecutor();
-//
-//		// Wrap tasks to preserve trace context
-//		return command -> virtualExecutor.execute(currentTraceContext.wrap(command));
-
-    /// /		return command -> virtualExecutor.execute(command);
-//	}
-    @Bean
-    public CompletableFutureExecutor tracingAsync(Executor tracingExecutor) {
+    public CompletableFutureExecutor executorTracing(
+        @Qualifier(TaskExecutionAutoConfiguration.APPLICATION_TASK_EXECUTOR_BEAN_NAME)
+        Executor tracingExecutor
+    ) {
         return new CompletableFutureExecutor(tracingExecutor);
     }
 }
