@@ -91,7 +91,8 @@
 			<artifactId>feign-micrometer</artifactId>
 			<version>13.6</version>
 		</dependency>
-<!--		Enable and expose span and trace IDs to Zipkin-->
+<!--		Enable and expose span and trace IDs to Zipkin
+https://docs.spring.io/spring-boot/reference/actuator/tracing.html#actuator.micrometer-tracing.tracer-implementations.brave-zipkin-->
 		<dependency>
 			<groupId>io.zipkin.reporter2</groupId>
 			<artifactId>zipkin-reporter-brave</artifactId>
