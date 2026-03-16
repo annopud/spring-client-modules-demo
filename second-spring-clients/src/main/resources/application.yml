@@ -51,3 +51,6 @@ logging:
   pattern:
     correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
   include-application-name: true
+
+service:
+  url: https://jsonplaceholder.typicode.com

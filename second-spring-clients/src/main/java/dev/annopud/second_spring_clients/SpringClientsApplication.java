@@ -3,6 +3,7 @@ package dev.annopud.second_spring_clients;
 import dev.annopud.second_spring_clients.config.CompletableFutureExecutor;
 import dev.annopud.second_spring_clients.user.UserHttpClient;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
@@ -13,6 +14,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
+import co.elastic.apm.attach.ElasticApmAttacher;
 
 import java.util.concurrent.Executor;
 
@@ -23,12 +25,13 @@ import java.util.concurrent.Executor;
 public class SpringClientsApplication {
 
     public static void main(String[] args) {
+        ElasticApmAttacher.attach();
         SpringApplication.run(SpringClientsApplication.class, args);
     }
 
     @Bean
-    UserHttpClient userHttpClient() {
-        RestClient restClient = RestClient.builder().baseUrl("https://jsonplaceholder.typicode.com").build();
+    UserHttpClient userHttpClient(@Value("${service.url}") String serviceUrl) {
+        RestClient restClient = RestClient.builder().baseUrl(serviceUrl).build();
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient))
             .build();
         return factory.createClient(UserHttpClient.class);

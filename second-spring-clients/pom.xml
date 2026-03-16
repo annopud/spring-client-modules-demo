@@ -30,6 +30,7 @@
 		<java.version>21</java.version>
 		<spring-cloud.version>2025.0.0</spring-cloud.version>
 		<micrometer-tracing.version>1.5.1</micrometer-tracing.version>
+		<co-elastic-apm-version>1.52.1</co-elastic-apm-version>
 	</properties>
 
 	<dependencyManagement>
@@ -52,6 +53,11 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>co.elastic.apm</groupId>
+			<artifactId>apm-agent-attach</artifactId>
+			<version>${co-elastic-apm-version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-kubernetes-fabric8</artifactId>
